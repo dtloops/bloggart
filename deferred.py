@@ -30,10 +30,9 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 import fix_path
 
 def main():
-  fix_path.fix_sys_path()
-  run_wsgi_app(deferred.application)
+    fix_path.fix_sys_path()
+    run_wsgi_app(deferred.application)
 
 
 if __name__ == "__main__":
-  main()
-
+    main()
