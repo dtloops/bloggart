@@ -173,6 +173,12 @@ class StaticContentHandler(webapp.RequestHandler):
                 serve = False
         self.output_content(content, serve)
 
+    def head(self, *args):
+        method = getattr(self, 'get', None)
+        if not method:
+            raise webob.exc.HTTPMethodNotAllowed()
+        method(*args)
+        self.response.body = ''
 
 application = webapp.WSGIApplication([
                 ('(/.*)', StaticContentHandler),
